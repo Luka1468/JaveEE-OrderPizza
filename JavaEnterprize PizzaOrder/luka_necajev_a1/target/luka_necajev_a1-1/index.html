@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Order</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body>
+      <div class="home-grid">
+        <!-- the background overlay of grey -->
+        <div class="overlay"></div>
+        <div class="noth"></div>
+        <div class="title top-header">
+          <h1 class="primary-text">Welcome to </h1>
+          <h1 class="primary-text">Luka's Pizzaria</h1>
+        </div>
+       
+          <div class="body ">
+              <div class="form-box"></div>
+            <form action="StartOrder.do" name="start" method="GET" onsubmit="return validateForm()">
+              <!-- holds the input feilds -->
+              <div class="input-fields">
+                  <h3>Name:
+                  
+                    <input type="text" value="your Name goes here" name="name"/><br>
+                  </h3>
+                  <h3>Phone:
+                      <input type="text" value="905-234-3234" name="phone" /><br>
+                      <input class="submit"  type="submit" value="Start Order">
+                  </h3>
+              </div>
+            </form>
+          </div>
+        
+        
+        
+        
+          </div>
+
+       
+      
+    </body>
+
+   <script>
+        // second validation of the forms validility   (first is html)   
+        function validateForm() {
+          var name = document.forms["start"]["name"].value;
+          var phone = document.forms["start"]["phone"].value;
+
+           //if the name field is empty
+          if (name == "") {
+            alert("Name must be filled out");
+            return false;
+            //if the phone field is empty
+          }else if(phone == ""){
+            alert("Phone must be filled out");
+            return false;
+            //if the name and phone field are empty, special message
+          }else if(name == "" && phone == ""){
+            alert("Both name and Phone must be filled out");
+            return false;
+          }  
+
+          //phone number matches regex pattern xyz-xyz-xyza
+        //    regex expression for a phone number xxx-xxx-xxxx    
+            var expression = /^[1-9]\d{2}-\d{3}-\d{4}$/g;
+          //if it matches the expresion then nothing happens, if not it does not allow submission
+          if(phone.match(expression)){
+            }else{
+                alert("The expression did not match xyz-xyz-xyzy");
+                return false;
+
+                
+            }
+
+            var expressionName= /^[a-z]{1,10}$/g;
+
+            //if it has more then 10 characters then dont allow to send
+            if(name.match(expressionName)){
+                return true;
+                alert("black");
+            }else{
+                alert("The name expression is over 10 or please take out the spaces");
+                return false;
+            }
+
+        }
+</script>
+</html>
